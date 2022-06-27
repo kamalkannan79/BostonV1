@@ -1,0 +1,29 @@
+{% extends 'BostonV1_app/test.html' %}
+{% block content %}
+<div class="card text-center">
+  <div class="card-header1">
+    <h2>SERVER INFORMATION</h2>
+  </div>
+  <div class="card-body">
+    <p><b>System:</b>{{system}}</p>
+    <p><b>Host Name:</b>{{Node_Name}}</p>
+    <p><b>Release:</b>{{Release}}</p>
+    <p><b>Version:</b>{{Version}}</p>
+    <p><b>Machine:</b>{{Machine}}</p>
+    <p><b>Processor:</b>{{Processor}}</p>
+    <p><b>MAC Address:</b>{{MAC_Address}}</p>
+    <br>
+    <h3>Reboot Server Details</h3>
+    <br>
+    <p><b>Reboot Date:</b>{{bt}}</p>
+    <h3>Statistics About CPU</h3>
+    <p><b>CTX Switches :</b> {{ctx}}</p>
+    <p><b>CPU Interrupts :</b> {{interrupts}}</p>
+    <p><b>CPU System Calls :</b> {{syscalls}}</p>
+    <a href={% url 'index' %} class="btn btn-primary">Back</a>
+  </div>
+  <div class="card-footer text-muted">
+    1 min ago
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'BostonV1_app/test.html' %}
+{% block content %}
+<div class="card text-center">
+  <div class="card-header1">
+    <h2>RAM Details</h2>
+    </div>
+    <div class="card-body">
+      <p><b>Total Memory: </b>{{Total}}</p>
+      <p><b>Available Memory: </b>{{Available}}</p>
+      <p><b>Used Memory: </b>{{Used}}</p>
+      <p><b>Percentage: </b>{{Percentage}}%</p>
+      <p><b>Free: </b>{{Free}}</p>
+      <div class="card-header1">
+        <h2>SWAP RAM Details</h2>
+        </div>
+      <p><b>Total SWAP Memory: </b>{{Total_swap}}</p>
+      <p><b>Used SWAP Memory: </b>{{Used_swap}}</p>
+      <p><b>SWAP Memory Percentage: </b>{{Percentage_swap}}%</p>
+      <p><b>Free SWAP Memory: </b>{{Free_swap}}</p>
+
+    <a href={% url 'index' %} class="btn btn-primary">Back</a>
+  </div>
+  <div class="card-footer text-muted">
+     1 min ago
+  </div>
+</div>
+
+{% endblock %}

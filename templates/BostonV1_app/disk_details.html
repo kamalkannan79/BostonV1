@@ -1,0 +1,99 @@
+{% extends 'BostonV1_app/test.html' %}
+{% block content %}
+<div class="card text-center">
+  <div class="card-header1">
+    <h2>Disk Total Space Each Drive</h2>
+    </div>
+    <div class="card-body">
+      <thead>
+      <table style="width:100%;"
+      <tr style="height: 40px;">
+        {% for dis in disk %}
+          <th>{{dis}}</th>
+        {%endfor%}
+
+      </tr>
+      </thead>
+      <tr style="height: 40px;" >
+        {% for total in disk_total_storage %}
+          <td>{{total}}</td>
+        {%endfor%}
+
+
+      </tr>
+      </table>
+  </div>
+
+  <div class="card-header1">
+    <h2>Disk Free Space Each Drive</h2>
+    </div>
+    <div class="card-body">
+      <thead>
+      <table style="width:100%;"
+      <tr style="height: 40px;">
+        {% for dis in disk %}
+          <th>{{dis}}</th>
+        {%endfor%}
+
+      </tr>
+      </thead>
+      <tr style="height: 40px;" >
+        {% for free in disk_free_storage %}
+          <td>{{free}}</td>
+        {%endfor%}
+
+
+      </tr>
+      </table>
+  </div>
+
+  <div class="card-header1">
+    <h2>Disk Used Space Each Drive</h2>
+    </div>
+    <div class="card-body">
+      <thead>
+      <table style="width:100%;"
+      <tr style="height: 40px;">
+        {% for dis in disk %}
+          <th>{{dis}}</th>
+        {%endfor%}
+
+      </tr>
+      </thead>
+      <tr style="height: 40px;" >
+        {% for used in disk_used_storage %}
+          <td>{{used}}</td>
+        {%endfor%}
+
+
+      </tr>
+      </table>
+  </div>
+
+  <div class="card-header1">
+    <h2>Disk Storage Percentage Each Drive</h2>
+    </div>
+    <div class="card-body">
+      <thead>
+      <table style="width:100%;"
+      <tr style="height: 40px;">
+        {% for dis in disk %}
+          <th>{{dis}}</th>
+        {%endfor%}
+
+      </tr>
+      </thead>
+      <tr style="height: 40px;" >
+        {% for percent in disk_storage_percent %}
+          <td>{{percent}} %</td>
+        {%endfor%}
+
+
+      </tr>
+      </table>
+    <a href={% url 'index' %} class="btn btn-primary">Back</a>
+  </div>
+
+</div>
+
+{% endblock %}

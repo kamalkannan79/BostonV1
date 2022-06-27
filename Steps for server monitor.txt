@@ -1,0 +1,22 @@
+Server Setup
+1.Install Python Locally(https://www.python.org/downloads/)
+
+2.Install git bash in system(https://git-scm.com/downloads)
+
+3.Open Commend Prompt 
+
+4.git clone https://github.com/kamalkannan79/Server1.1.git
+
+5.change the directory to server1.1 directory
+	cd Server1.1
+	
+6.change the directory to BostonV1 directory
+	cd BostonV1
+	
+7.Install Requirements Libraries
+	pip install -r requirements.txt
+
+8.run the django project
+	python manage.py runserver <port forwarding ip here>
+	
+9.Open Browser hit the IP 

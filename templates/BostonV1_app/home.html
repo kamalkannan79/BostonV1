@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Server Monitoring App</title>
+	<link rel = "icon" href =
+"https://media-exp1.licdn.com/dms/image/C4D0BAQEUXldWcZ7d-w/company-logo_200_200/0/1519876666861?e=1660176000&v=beta&t=-Th-z1rKYBTpCksCbSp3sic6rYCtPV319eltoLxBdS8"
+        type = "image/x-icon">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<style>
+
+	body {
+		margin: 0;
+		padding: 0;
+		background: white ;
+	}
+
+	nav{
+		width: 100% ;
+		background: black;
+		overflow: auto;
+	}
+	 ul {
+    	padding: 0;
+    	margin: 0 0 0 100px;
+    	list-style: none;
+    }
+
+
+     li {
+    	float: left;
+    }
+    li a:hover {
+  background-color:   #888888;
+}
+    .logo img{
+   	position: absolute;
+   	margin-top: 11px;
+   	margin-left: 12px;
+
+   }
+   nav a {
+  	width: 100px;
+  	display: block;
+  	padding: 18px 10px;
+
+  	font-family: arial;
+  	color: #FFFFFF;
+  	text-align: left;
+  	text-decoration: none;
+  }
+
+</style>
+</head>
+<body>
+<div class = "logo"<a href ="#"><img src = "data:image/png;base64,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" style="width:160px;height:45px;"></a>
+
+</div>
+
+
+<nav>
+ <ul>
+  <li  style="float:right"><a href="#">ABOUT</a></li>
+  <li  style="float:right"><a href="#">CONTENT</a></li>
+  <li  style="float:right"><a href="#">NEWS </a></li>
+  <li  style="float:right"><a href="#">HOME</a></li>
+</ul>
+</nav>
+
+
+
+
+   <div class="row row-cols-1 row-cols-md-3 g-3">
+  <div class="col">
+    <div class="card h-100">
+					<center>
+						<svg xmlns="http://www.w3.org/2000/svg" width="100" height="160" fill="currentColor" class="bi bi-server" viewBox="0 0 16 16">
+				  <path d="M1.333 2.667C1.333 1.194 4.318 0 8 0s6.667 1.194 6.667 2.667V4c0 1.473-2.985 2.667-6.667 2.667S1.333 5.473 1.333 4V2.667z"/>
+				  <path d="M1.333 6.334v3C1.333 10.805 4.318 12 8 12s6.667-1.194 6.667-2.667V6.334a6.51 6.51 0 0 1-1.458.79C11.81 7.684 9.967 8 8 8c-1.966 0-3.809-.317-5.208-.876a6.508 6.508 0 0 1-1.458-.79z"/>
+				  <path d="M14.667 11.668a6.51 6.51 0 0 1-1.458.789c-1.4.56-3.242.876-5.21.876-1.966 0-3.809-.316-5.208-.876a6.51 6.51 0 0 1-1.458-.79v1.666C1.333 14.806 4.318 16 8 16s6.667-1.194 6.667-2.667v-1.665z"/>
+				</svg>
+		  </center>
+      <div class="card-body">
+        <h5 class="card-title"><b>SERVER</b></h5>
+				<p><b>System:</b>{{system}}</p>
+		    <p><b>Host Name:</b>{{hname}}</p>
+		    <p><b>Release:</b>{{Release}}</p>
+		    <p><b>Version:</b>{{Version}}</p>
+		    <p><b>Machine:</b>{{Machine}}</p>
+		    <p><b>Processor:</b>{{Processor}}</p>
+
+				<p><b>Host IP:</b>{{hip}}</p>
+         <a href="#" class="btn btn-primary">More Details</a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <center>
+				<svg xmlns="http://www.w3.org/2000/svg" width="100" height="160" fill="currentColor" class="bi bi-cpu-fill" viewBox="0 0 16 16">
+  <path d="M6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+  <path d="M5.5.5a.5.5 0 0 0-1 0V2A2.5 2.5 0 0 0 2 4.5H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2A2.5 2.5 0 0 0 4.5 14v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14a2.5 2.5 0 0 0 2.5-2.5h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14A2.5 2.5 0 0 0 11.5 2V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5zm1 4.5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3A1.5 1.5 0 0 1 6.5 5z"/>
+</svg>
+</center>
+      <div class="card-body">
+        <h5 class="card-title"><b>CPU</b></h5>
+				<h5><b>Cores</b></h5>
+		    <p><b>Total cores: </b>{{Total_cores}}</p>
+		    <p><b>Physical cores : </b>{{Physical_cores}}</p>
+		    <h5><b>Frequency</b></h5>
+		    <p><b>Frequence Range: </b>{{Min_Frequency}}MHz to {{Max_Frequency}}MHz</p>
+		    <p><b>Current Frequency : </b>{{Current_Frequency}}00MHz</p>
+		    <h5><b>Usage</b></h5>
+		    <p><b>Total CPU Usage : </b>{{Total_CPU_Usage}}%</p>
+         <a href="#" class="btn btn-primary">More Details</a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+			<center>
+				<svg xmlns="http://www.w3.org/2000/svg" width="100" height="160" fill="currentColor" class="bi bi-sd-card-fill" viewBox="0 0 16 16">
+				  <path d="M12.5 0H5.914a1.5 1.5 0 0 0-1.06.44L2.439 2.853A1.5 1.5 0 0 0 2 3.914V14.5A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 12.5 0Zm-7 2.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75Zm2 0a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75Zm2.75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 1.5 0Zm1.25-.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75Z"/>
+				</svg>
+	</center>
+      <div class="card-body">
+        <h5 class="card-title"><b>RAM</b></h5>
+				<p><b>Total Memory: </b>{{Total}}</p>
+				<p><b>Available Memory: </b>{{Available}}</p>
+				<p><b>Used Memory: </b>{{Used}}</p>
+				<p><b>Percentage: </b>{{Percentage}}%</p>
+				<p><b>Free: </b>{{Free}}</p>
+         <a href="#" class="btn btn-primary">More Details</a>
+      </div>
+    </div>
+  </div>
+
+	<div class="col">
+    <div class="card h-100">
+			<center>
+				<svg xmlns="http://www.w3.org/2000/svg" width="100" height="160" fill="currentColor" class="bi bi-gpu-card" viewBox="0 0 16 16">
+  <path d="M4 8a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm7.5-1.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z"/>
+  <path d="M0 1.5A.5.5 0 0 1 .5 1h1a.5.5 0 0 1 .5.5V4h13.5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5H2v2.5a.5.5 0 0 1-1 0V2H.5a.5.5 0 0 1-.5-.5Zm5.5 4a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM9 8a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0Z"/>
+  <path d="M3 12.5h3.5v1a.5.5 0 0 1-.5.5H3.5a.5.5 0 0 1-.5-.5v-1Zm4 1v-1h4v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5Z"/>
+</svg>
+</center>
+          <div class="card-body">
+        <h5 class="card-title">GPU</h5>
+				<p>There is No GPU in System</p>
+         <a href="#" class="btn btn-primary">Click For GPU Details</a>
+      </div>
+    </div>
+  </div>
+	<div class="col">
+    <div class="card h-100">
+			<script>
+			window.onload = function () {
+
+			var dps = []; // dataPoints
+			var chart = new CanvasJS.Chart("chartContainer", {
+				title :{
+					text: "CPU Usage"
+				},
+				data: [{
+					type: "line",
+					dataPoints: dps
+
+				}]
+
+			});
+
+			var xVal = 0;
+			var yVal = 100;
+			var updateInterval = 1000;
+			var dataLength = 20; // number of dataPoints visible at any point
+
+			var updateChart = function (count) {
+
+				count = count || 1;
+
+				for (var j = 0; j < count; j++) {
+					yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
+					dps.push({
+						x: xVal,
+						y: yVal
+					});
+					xVal++;
+				}
+
+				if (dps.length > dataLength) {
+					dps.shift();
+				}
+
+				chart.render();
+			};
+
+			updateChart(dataLength);
+			setInterval(function(){updateChart()}, updateInterval);
+
+			}
+			</script>
+			</head>
+			<body>
+			<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+			<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+      <div class="card-body">
+        <h5 class="card-title">CPU Graph</h5>
+         <a href="#" class="btn btn-primary">Click For CPU Details</a>
+      </div>
+    </div>
+  </div>
+
+	<div class="col">
+		<div class="card h-100">
+					<center>
+						<svg xmlns="http://www.w3.org/2000/svg" width="100" height="160" fill="currentColor" class="bi bi-hdd-stack-fill" viewBox="0 0 16 16">
+  <path d="M2 9a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H2zm.5 3a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm2 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zM2 2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm.5 3a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm2 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1z"/>
+</svg>
+			</center>
+			<div class="card-body">
+				<h5 class="card-title"><b>Disk Details</b></h5>
+				<p><b>Drives in System:</b>{{disk}}</p>
+		    <br>
+		    <p><b>Total storage each Drives:</b>{{disk_total_storage_dict}}</p>
+		    <br>
+		    <p><b>Free storage each Drives:</b>{{disk_free_storage_dict}}</p>
+				<p><b>Used Storage For Each Drives: </b>{{disk_used_storage_dict}}</p>
+		    <br>
+		    <p><b>Disk Used Percentage : </b>{{disk_percent_dict}}</p>
+		    <br>
+				 <a href="#" class="btn btn-primary">More Details</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+  </body>
+</html>

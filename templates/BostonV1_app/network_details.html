@@ -1,0 +1,18 @@
+{% extends 'BostonV1_app/test.html' %}
+{% block content %}
+<div class="card text-center">
+  <div class="card-header1">
+    <h2>Network Details</h2>
+    </div>
+    <div class="card-body">
+      <p><b>Host Name :</b> {{hname}}</p>
+      <p><b>Host IP:</b> {{hip}}</p>
+      <p><b>Network:</b> {{LAN}}</p>
+    <a href={% url 'index' %} class="btn btn-primary">Back</a>
+  </div>
+  <div class="card-footer text-muted">
+     1 min ago
+  </div>
+</div>
+
+{% endblock %}

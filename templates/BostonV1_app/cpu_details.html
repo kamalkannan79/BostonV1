@@ -1,0 +1,19 @@
+{% extends 'BostonV1_app/test.html' %}
+{% block content %}
+<div class="card text-center">
+  <div class="card-header1">
+    <h2>CPU Each Core Details</h2>
+    </div>
+    <div class="card-body">
+<p><b>Total CPU Usage : </b>{{Total_CPU_Usage}}%</p>
+{% for percent in cpu_usage%}
+<p><b>Core Percentage</b> = {{percent}}%</p>
+{% endfor %}
+    <a href={% url 'index' %} class="btn btn-primary">Back</a>
+  </div>
+  <div class="card-footer text-muted">
+     1 min ago
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+django
+psutil
+GPUtil
+django-slik
+datetime
+py-cpuinfo
+django-sql-queries 
