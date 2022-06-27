@@ -1,7 +1,7 @@
 django
 psutil
 GPUtil
-django-slik
+django-silk
 datetime
 py-cpuinfo
-socket
+mysqlclient
